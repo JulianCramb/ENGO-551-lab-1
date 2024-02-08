@@ -32,6 +32,16 @@ users = Table('users', metadata,
 # Create tables
 metadata.create_all(engine)
 
+reviews = Table('reviews', metadata,
+    Column('id', Integer, primary_key=True),
+    Column('user_id', Integer, nullable=False),
+    Column('username', String, nullable=False),
+    Column('review', String, nullable=False)
+)
+
+# Create tables
+metadata.create_all(engine)
+
 
 def is_logged_in():
     return 'username' in session and session['username'] is not None
